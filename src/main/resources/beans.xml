@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans><!--根标签-->
+
+<!-- 里面的每一个bean标签
+id属性:唯一标识符
+class:全限定名称
+-->
+
+    <!--管理Service-->
+    <bean id="userService" class="com.service.impl.UserServiceImpl"></bean>
+    <bean id="productService" class="com.service.impl.ProductServiceImpl"></bean>
+    <bean id="categoryService" class="com.service.impl.CategoryServiceImpl"></bean>
+
+    <!--管理Dao-->
+    <bean id="userDao" class="com.dao.impl.UserDaoImpl"></bean>
+    <bean id="productDao" class="com.dao.impl.ProductDaoImpl"></bean>
+    <bean id="categoryDao" class="com.dao.impl.CategoryDaoImpl"></bean>
+
+</beans>
