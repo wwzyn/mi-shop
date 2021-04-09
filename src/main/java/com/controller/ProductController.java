@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.entity.PageBean;
 import com.entity.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.ProductService;
@@ -40,11 +41,19 @@ public class ProductController extends BaseController{
         //获取cid
         String cid = request.getParameter("cid");
         //System.out.println("cid"+cid);
-        //通过cid查询数据集合
-        List plist = ps.SelectProductsByCid(cid);
+        //获取分页数据
+        String currentPage = request.getParameter("currentPage");
+        //String pageSize = request.getParameter("pageSize");
+        //判断并赋值
+        if (currentPage==null || "".equals(currentPage)){
+            currentPage = "1";
+        }
+        //通过cid查询数据集合,传入当前页码
+        PageBean pb = ps.SelectProductsByCid(cid,currentPage);
         //System.out.println("controller 集合"+plist);
-        //将list放入request
-        request.setAttribute("plist",plist);
+        //将pb放入request
+        request.setAttribute("cid",cid);
+        request.setAttribute("pb",pb);
 
         return "/jsp/product_list.jsp" ;
     }

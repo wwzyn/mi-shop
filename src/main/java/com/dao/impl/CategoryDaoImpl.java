@@ -18,9 +18,8 @@ public class CategoryDaoImpl implements CategoryDao {
         try{
             qr = new QueryRunner(JdbcUtils.getDataSource());
             sql = "select * from category";
-
             List list = qr.query(sql, new BeanListHandler<Category>(Category.class));
-            System.out.println(list);
+            //System.out.println(list);
             return list;
         }catch (Exception e){
             e.printStackTrace();

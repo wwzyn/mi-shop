@@ -1,5 +1,6 @@
 package com.service;
 
+import com.entity.PageBean;
 import com.entity.Product;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 public interface ProductService {
     List SelectHotProducts(int i);
 
-    List SelectProductsByCid(String cid);
+    PageBean SelectProductsByCid(String cid, String cpage);
 
     Product SelectProductByPid(String pid);
 }
