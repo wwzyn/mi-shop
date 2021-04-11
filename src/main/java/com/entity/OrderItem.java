@@ -2,12 +2,30 @@ package com.entity;
 
 import java.io.Serializable;
 
-public class Orderitem implements Serializable {
+public class OrderItem implements Serializable {
     private String itemid;
     private int count;
     private double subtotal;
     private String pid;
     private String oid;
+    private Product product;
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public String getItemid() {
         return itemid;

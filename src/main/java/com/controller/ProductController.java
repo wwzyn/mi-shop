@@ -57,7 +57,7 @@ public class ProductController extends BaseController{
 
         return "/jsp/product_list.jsp" ;
     }
-    //通过pid查询商品信息
+    //通过pid查询商品信息(详情页展示)
     public String findProduct(HttpServletRequest request, HttpServletResponse response){
         //获取pid
         String pid = request.getParameter("pid");

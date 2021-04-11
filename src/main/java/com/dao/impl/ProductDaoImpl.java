@@ -20,7 +20,7 @@ public class ProductDaoImpl implements ProductDao {
     public List SelectHotProducts(int i) {
         try{
             qr = new QueryRunner(JdbcUtils.getDataSource());
-            System.out.println(i);
+           // System.out.println(i);
             sql = "select pid,pname,market_price,shop_price,pimage,pdesc,pflag from product where is_hot = ?";
             List list = qr.query(sql,new BeanListHandler<Product>(Product.class),i);
             //System.out.println("热门商品"+list);
@@ -38,7 +38,7 @@ public class ProductDaoImpl implements ProductDao {
             qr = new QueryRunner(JdbcUtils.getDataSource());
             sql = "select * from product where cid = ? limit ?,?";
             List list = qr.query(sql,new BeanListHandler<Product>(Product.class),cid,start,pageSize);
-            System.out.println("通过cid查询数据:"+list);
+           // System.out.println("通过cid查询数据:"+list);
             return list;
         }catch (Exception e){
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class ProductDaoImpl implements ProductDao {
             qr = new QueryRunner(JdbcUtils.getDataSource());
             sql = "select * from product where pid = ?";
             Product product= qr.query(sql, new BeanHandler<Product>(Product.class), pid);
-            System.out.println("商品"+product);
+            //System.out.println("商品"+product);
             return product;
         }catch (Exception e){
             e.printStackTrace();

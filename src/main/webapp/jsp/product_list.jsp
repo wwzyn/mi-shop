@@ -44,7 +44,7 @@
 				</ol>
 			</div>
 
-			<c:forEach items="${plist}" var="p">
+			<c:forEach items="${pb.list}" var="p">
 				<div class="col-md-2" style="text-align:center;height:250px;padding:10px 0px;">
 					<a href="${pageContext.request.contextPath}/product?method=findProduct&pid=${p.pid}">
 						<img src="${pageContext.request.contextPath}/${p.pimage}" width="170" height="170" style="display: inline-block;">
@@ -139,25 +139,48 @@
 		</div>
 
 		<!--分页 -->
-		<div style="width:380px;margin:0 auto;margin-top:50px;">
-			<ul class="pagination" style="text-align:center; margin-top:10px;">
-				<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li>
-					<a href="#" aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
-			</ul>
-		</div>
+			<div>
+				<nav aria-label="Page navigation" style="text-align: center">
+					<ul class="pagination">
+						<c:if test="${pb.currentPage == 1}">
+							<li>
+								<a href="javascript:void(0)" aria-label="Previous">
+									<span aria-hidden="true" >&laquo;</span>
+								</a>
+							</li>
+						</c:if>
+						<c:if test="${pb.currentPage > 1}">
+							<li>
+								<a href="${pageContext.request.contextPath}/product?method=findAllProductsByCid&currentPage=${pb.currentPage-1}&cid=${cid}" aria-label="Previous">
+									<span aria-hidden="true" >&laquo;</span>
+								</a>
+							</li>
+						</c:if>
+						<c:forEach begin="1" end="${pb.totalPage}" var="i">
+							<%--判断是否为当前页--%>
+							<c:if test="${pb.currentPage == i}">
+								<%--变亮--%>
+								<li class="active">
+									<a href="#">${i}</a>
+								</li>
+							</c:if>
+							<%--如果不是当前页进行跳转--%>
+							<c:if test="${pb.currentPage != i}">
+								<li>
+									<a href="${pageContext.request.contextPath}/product?method=findAllProductsByCid&currentPage=${pb.currentPage-1}&cid=${cid}">${i}</a>
+								</li>
+							</c:if>
+						</c:forEach>
+
+						<li>
+							<a href="${pageContext.request.contextPath}/product?method=findAllProductsByCid&currentPage=${pb.currentPage+1}&cid=${cid}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+						<span style="font-size: 26px">当前${pb.totalCount}条数据共${pb.totalPage}页</span>
+					</ul>
+				</nav>
+			</div>
 		<!-- 分页结束=======================        -->
 
 		<!--

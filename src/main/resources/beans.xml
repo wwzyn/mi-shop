@@ -10,10 +10,12 @@ class:全限定名称
     <bean id="userService" class="com.service.impl.UserServiceImpl"></bean>
     <bean id="productService" class="com.service.impl.ProductServiceImpl"></bean>
     <bean id="categoryService" class="com.service.impl.CategoryServiceImpl"></bean>
+    <bean id="orderService" class="com.service.impl.OrderServiceImpl"></bean>
 
     <!--管理Dao-->
     <bean id="userDao" class="com.dao.impl.UserDaoImpl"></bean>
     <bean id="productDao" class="com.dao.impl.ProductDaoImpl"></bean>
     <bean id="categoryDao" class="com.dao.impl.CategoryDaoImpl"></bean>
+    <bean id="orderDao" class="com.dao.impl.OrderDaoImpl"></bean>
 
 </beans>

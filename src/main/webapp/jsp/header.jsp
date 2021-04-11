@@ -30,7 +30,7 @@
                     欢迎,${user.name} &nbsp;&nbsp;
                     <li><a href="${pageContext.request.contextPath}/user?method=logOut">退出</a></li>
                 </c:if>
-                <li><a href="">购物车</a></li>
+                <li><a href="${pageContext.request.contextPath}/cart?method=cartUI">购物车</a></li>
             </ol>
         </div>
     </div>

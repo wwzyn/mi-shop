@@ -2,8 +2,10 @@ package com.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Orders implements Serializable {
+public class Order implements Serializable {
     private String oid;
     private Date ordertime;
     private double total;
@@ -12,6 +14,42 @@ public class Orders implements Serializable {
     private String name;
     private String telephone;
     private String uid;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "oid='" + oid + '\'' +
+                ", ordertime=" + ordertime +
+                ", total=" + total +
+                ", state=" + state +
+                ", address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", uid='" + uid + '\'' +
+                ", user=" + user +
+                ", items=" + items +
+                '}';
+    }
+
+    //当前订单包含的订单项
+    List<OrderItem> items = new LinkedList<>();
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(OrderItem item) {
+         items.add(item);
+    }
 
     public String getOid() {
         return oid;
@@ -77,17 +115,4 @@ public class Orders implements Serializable {
         this.uid = uid;
     }
 
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "oid='" + oid + '\'' +
-                ", ordertime=" + ordertime +
-                ", total=" + total +
-                ", state=" + state +
-                ", address='" + address + '\'' +
-                ", name='" + name + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", uid='" + uid + '\'' +
-                '}';
-    }
 }
